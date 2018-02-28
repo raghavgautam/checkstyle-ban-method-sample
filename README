@@ -1,6 +1,0 @@
-Code copies and modified from: https://github.com/sevntu-checkstyle/checkstyle-samples
-
-run
-./gradlew clean check
-OR
-mvn clean checkstyle:check
