@@ -1,3 +1,6 @@
 Code copies and modified from: https://github.com/sevntu-checkstyle/checkstyle-samples
 
-run as "./gradlew check"
+run
+./gradlew clean check
+OR
+mvn clean checkstyle:check
