@@ -1,0 +1,57 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
+}
+
+apply plugin: 'java'
+apply plugin: 'checkstyle'
+
+sourceCompatibility = 1.7
+
+group = 'com.github.sevntu-checkstyle'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    //compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
+    //testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile group: 'junit', name: 'junit', version: '4.+'
+}
+
+checkstyle {
+
+  project.ext.checkstyleVersion = '8.8'
+  project.ext.sevntuChecksVersion = '1.28.0'
+
+  repositories {
+    mavenCentral()
+    // we keep artifacts in maven central too, but this is just example of usage from our old maven repo on github
+    maven {
+      url "http://sevntu-checkstyle.github.com/sevntu.checkstyle/maven2"
+    }
+  }
+
+  ignoreFailures = true
+  configFile = file("${project.rootDir}/checkstyle.xml")
+
+  //sourceSets = [sourceSets.main]
+  //showViolations = true
+  //reportsDir = file("$project.buildDir/checkstyleReports")
+  //configProperties = ['baseDir': "$project.projectDir"]
+
+  //https://discuss.gradle.org/t/some-checkstyle-rules-dont-work-in-gradle/16102/4
+  checkstyleMain {
+    source = sourceSets.main.allSource
+    outputs.upToDateWhen { false }
+  }
+
+  configurations {
+    checkstyle
+  }
+
+  dependencies{
+    assert project.hasProperty("checkstyleVersion")
+
+    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
+    checkstyle "com.github.sevntu-checkstyle:sevntu-checks:${sevntuChecksVersion}"
+  }
+}
+

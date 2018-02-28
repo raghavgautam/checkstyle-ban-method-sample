@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE module PUBLIC
+  "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+  "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+  <module name="TreeWalker">
+    <module name="com.github.sevntu.checkstyle.checks.coding.ForbidCertainMethodCheck">
+      <property name="methodName" value="^exit$"/>
+      <property name="argumentCount" value="1"/>
+      <message
+        key="forbid.certain.method"
+        value="Call to ''{0}'' method (matches pattern ''{1}'') with ''{2}'' arguments (matches pattern ''{3}'') is forbidden. Reason: System.exit() call stops the jvm leading to DOS attacks."/>
+    </module>
+    <module name="com.github.sevntu.checkstyle.checks.coding.ForbidCertainMethodCheck">
+       <property name="methodName" value="assert(True|False)"/>
+       <property name="argumentCount" value="1"/>
+      <message
+        key="forbid.certain.method"
+        value="Call to ''{0}'' method (matches pattern ''{1}'') with ''{2}'' arguments (matches pattern ''{3}'') is forbidden. Reason: Please suppply a reason with assertTrue()/assertFalse() calls."/>
+    </module>
+  </module>
+</module>

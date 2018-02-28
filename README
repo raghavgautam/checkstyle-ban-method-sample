@@ -1,0 +1,3 @@
+Code copies and modified from: https://github.com/sevntu-checkstyle/checkstyle-samples
+
+run as "./gradlew check"
