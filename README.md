@@ -10,4 +10,4 @@
 mvn clean checkstyle:check
 ```
 
-Code copies and modified from: https://github.com/sevntu-checkstyle/checkstyle-samples
+Code copied and modified from: https://github.com/sevntu-checkstyle/checkstyle-samples
